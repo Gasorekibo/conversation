@@ -4,12 +4,18 @@ const { v4: uuidv4 } = require('uuid');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const { analyzeWithGemini } = require('./helpers/geminiPromptFormat');
-const qs = require('querystring');
+const cors = require('cors');
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+const corsOptions = {
+  origin: '*', 
+  methods: 'GET,POST', 
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 const conversations = new Map();
 const INTENT_REQUIREMENTS = {
