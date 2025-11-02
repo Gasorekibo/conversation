@@ -317,7 +317,9 @@ app.get('/api/health', (req, res) => {
         active_conversations: conversations.size 
     });
 });
-
+app.get('/', (req,res)=> {
+    res.send('Welcome to the Chatbot server!');
+})
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Chatbot server running on port ${PORT}`);
