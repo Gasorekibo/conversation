@@ -148,10 +148,6 @@ function extractSessionId(req) {
   // Priority 4: Generate new session ID
   return uuidv4();
 }
-
-/**
- * Update conversation state with new information
- */
 function updateConversationState(conversation, intentData) {
   if (intentData.intent !== 'provide_info' && intentData.intent !== 'confirm') {
     conversation.intent = intentData.intent;
@@ -171,10 +167,6 @@ function updateConversationState(conversation, intentData) {
     conversation.confirmed = true;
   }
 }
-
-/**
- * Check what information is still missing
- */
 function getMissingInformation(conversation) {
   const required = INTENT_REQUIREMENTS[conversation.intent] || [];
   const missing = [];
@@ -188,9 +180,6 @@ function getMissingInformation(conversation) {
   return missing;
 }
 
-/**
- * Generate follow-up question for missing information
- */
 function generateFollowUpQuestion(conversation, missingField) {
   const questions = {
     product_name: 'What product would you like to order?',
@@ -201,9 +190,6 @@ function generateFollowUpQuestion(conversation, missingField) {
   return questions[missingField] || 'Could you provide more details?';
 }
 
-/**
- * Generate confirmation message
- */
 function generateConfirmation(conversation) {
   if (conversation.intent === 'place_order') {
     return `Just to confirm: You want to order ${conversation.quantity} ${conversation.product_name}(s). Is that correct?`;
@@ -213,9 +199,6 @@ function generateConfirmation(conversation) {
   return 'Is this information correct?';
 }
 
-/**
- * Reset conversation state
- */
 function resetConversation(conversation) {
   conversation.intent = null;
   conversation.product_name = null;
