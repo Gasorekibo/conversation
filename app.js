@@ -208,9 +208,6 @@ function resetConversation(conversation) {
   conversation.awaiting_confirmation = false;
 }
 
-/**
- * Get or create conversation
- */
 function getConversation(sessionId) {
   if (!conversations.has(sessionId)) {
     conversations.set(sessionId, {
