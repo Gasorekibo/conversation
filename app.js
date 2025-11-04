@@ -259,9 +259,6 @@ async function callBackendAPI(conversation) {
   }
 }
 
-/**
- * Format backend response for user
- */
 function formatBackendResponse(intent, result) {
   if (result?.error) {
     return `Sorry, I encountered an error: ${result.error}`;

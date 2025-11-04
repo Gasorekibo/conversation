@@ -1,4 +1,4 @@
-name: CI – Lint & Commitlint
+name: CI/CD Pipeline
 
 on:
   push:
