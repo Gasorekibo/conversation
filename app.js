@@ -304,7 +304,7 @@ app.get('/api/health', (req, res) => {
   });
 });
 app.get('/', (req, res) => {
-  res.send('Thanks for visiting the Chatbot API server!✈️🧑‍🚒.');
+  res.send('Thanks for visiting the Chatbot API server!✈️🧑‍🚒.!!');
 });
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
