@@ -1,4 +1,4 @@
-name: CI – Lint & Commitlint
+name: CI/CD Pipeline
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    environment: conversation
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,3 +30,8 @@ jobs:
 
       - name: Verify commit messages
         run: npx commitlint --from ${{ github.event.before }} --to ${{ github.sha }}
+
+      - name: Trigger deploy on Render
+        if: success()
+        run: |
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}

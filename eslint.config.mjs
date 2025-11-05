@@ -2,13 +2,11 @@ import js from '@eslint/js';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 import globals from 'globals';
-
+import noLowercaseFunctions from './eslint-rules/no-uppercase-functions.mjs';
 export default [
-  // Ignore patterns (separate config object)
   {
     ignores: ['node_modules/', 'dist/', 'build/', 'coverage/', '.husky/'],
   },
-  // Main configuration
   {
     files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
     languageOptions: {
@@ -21,6 +19,11 @@ export default [
     },
     plugins: {
       prettier,
+      local: {
+        rules: {
+          'no-lowercase-functions': noLowercaseFunctions,
+        },
+      },
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -28,6 +31,7 @@ export default [
       'prettier/prettier': 'error',
       'no-console': 'off',
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'local/no-lowercase-functions': 'error',
     },
   },
 ];

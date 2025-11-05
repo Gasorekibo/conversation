@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: conversation-app
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    repo: https://github.com/your-username/conversation-app
+    branch: main
+    autoDeploy: false
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_API_URL
+        value: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+      - key: CPI_API_URL
+        value: https://09546804trial.it-cpitrial05-rt.cfapps.us10-001.hana.ondemand.com/http/customer/supports
+      - key: CPI_AUTH_URL
+        value: https://09546804trial.authentication.us10.hana.ondemand.com/oauth/token
+      - key: CPI_CLIENT_ID
+        sync: false
+      - key: CPI_CLIENT_SECRET
+        sync: false
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production

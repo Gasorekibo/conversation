@@ -104,7 +104,7 @@ app.post('/api/chat', async (req, res) => {
     if (!sessionDeleted) {
       res.cookie('session_id', sessionId, {
         httpOnly: true,
-        maxAge: 3600000, // 1 hour
+        maxAge: 3600000,
         sameSite: 'strict',
       });
       res.setHeader('X-Session-ID', sessionId);
@@ -144,8 +144,6 @@ function extractSessionId(req) {
   if (req.body.session_id) {
     return req.body.session_id;
   }
-
-  // Priority 4: Generate new session ID
   return uuidv4();
 }
 function updateConversationState(conversation, intentData) {
@@ -259,9 +257,6 @@ async function callBackendAPI(conversation) {
   }
 }
 
-/**
- * Format backend response for user
- */
 function formatBackendResponse(intent, result) {
   if (result?.error) {
     return `Sorry, I encountered an error: ${result.error}`;
