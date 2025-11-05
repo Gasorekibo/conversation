@@ -9,6 +9,7 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    environment: conversation
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
