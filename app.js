@@ -34,7 +34,7 @@ app.post('/api/chat', async (req, res) => {
     const { message } = req.body;
 
     if (!message) {
-      return res.status(400).json({ error: 'Message is required' });
+      return res.status(400).json({ error: 'Message is required!' });
     }
     const sessionId = extractSessionId(req);
     const conversation = getConversation(sessionId);
