@@ -23,6 +23,7 @@ const INTENT_REQUIREMENTS = {
   search_products: [],
 };
 
+//basic auth header
 function getBasicAuthHeader() {
   const auth = Buffer.from(
     `${process.env.CPI_CLIENT_ID}:${process.env.CPI_CLIENT_SECRET}`
