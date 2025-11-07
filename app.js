@@ -23,7 +23,6 @@ const INTENT_REQUIREMENTS = {
   search_products: [],
 };
 
-//basic auth header
 function getBasicAuthHeader() {
   const auth = Buffer.from(
     `${process.env.CPI_CLIENT_ID}:${process.env.CPI_CLIENT_SECRET}`
@@ -35,7 +34,7 @@ app.post('/api/chat', async (req, res) => {
     const { message } = req.body;
 
     if (!message) {
-      return res.status(400).json({ error: 'Message is required' });
+      return res.status(400).json({ error: 'Message is required!' });
     }
     const sessionId = extractSessionId(req);
     const conversation = getConversation(sessionId);
